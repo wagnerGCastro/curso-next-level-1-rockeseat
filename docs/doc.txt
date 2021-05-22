@@ -18,27 +18,30 @@
   10- npm install knex --save
   11- npm install sqlite3
 
-
 -- Create Client
   1- npx create-react-app web --template=typescript
 
-  
-
-
 -- Modelagem
-  - points (pontos de coleta)
-    - image
-    - name
-    - email
-    - whatsapp
-    - latitude
-    - longitude
-    - city
-    - uf
+  # points (pontos de coleta)
+    + image
+    + name
+    + email
+    + whatsapp
+    + latitude
+    + longitude
+    + city
+    + uf
   - items (items de coleta)
     - image
     - tilte
   - Muitos para Muitos (N-N) (pivot) 
-    - point_items (Relacionament dos items que um ponto coleta)
-      - point_id
-      - item _id
+    # point_items (Relacionament dos items que um ponto coleta)
+      + point_id
+      + item _id
+
+
+-- Funcionalidades
+  + Cadastro de ponto de coleta
+  + Listar items de coleta
+  + listar pontos (filtros por estado/cidade/items)
+  + Listar um ponto de coleta específico
