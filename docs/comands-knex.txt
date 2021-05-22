@@ -1,0 +1,4 @@
+-- rum migration
+  npx knex migrate:latest --knexfile kenxfile.ts
+-- roda ultima migrate  
+  npx knex migrate:latest --knexfile kenxfile.ts migrate:latest

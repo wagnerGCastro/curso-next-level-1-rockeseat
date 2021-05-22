@@ -1,0 +1,44 @@
+
+-- Dependencies: 
+  - Node 14.17.0
+
+-- Create Server
+  00- mkdir server && cd server
+  01- npm init -y
+  02- npm install --save express
+  03- npm i --save-dev @types/expressnodfe
+  04- npm i --save-dev node -D
+  05- npx ts-node src/server.ts         -- rodar aplicação
+  06- npm install typescript -D
+  07- npx tsc --init
+  08- npm install ts-node-dev -D
+  09- npx ts-node-dev src/server.ts     -- rodar aplicação
+
+  - Utilizando http://knexjs.org/ 
+  10- npm install knex --save
+  11- npm install sqlite3
+
+
+-- Create Client
+  1- npx create-react-app web --template=typescript
+
+  
+
+
+-- Modelagem
+  - points (pontos de coleta)
+    - image
+    - name
+    - email
+    - whatsapp
+    - latitude
+    - longitude
+    - city
+    - uf
+  - items (items de coleta)
+    - image
+    - tilte
+  - Muitos para Muitos (N-N) (pivot) 
+    - point_items (Relacionament dos items que um ponto coleta)
+      - point_id
+      - item _id
