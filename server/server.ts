@@ -1,5 +1,6 @@
 import path from 'path';
 import express from 'express';
+import cors from 'cors';
 import routes from './src/routes';
 
 require('dotenv').config({
@@ -27,6 +28,7 @@ const app = express();
 //   response.json('terste');
 // });
 
+app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/static', express.static(path.resolve(__dirname, 'public')));
