@@ -1,9 +1,11 @@
 
 import { connection as knex } from '../../config/database';
 
+import { Request, Response } from 'express';
+
 class ItemController {
 
-  async index(req: any, res: any) {
+  async index(req: Request, res: Response) {
     const result = await knex('items').select('*');
 
     const serializedItems = result.map(item => {
