@@ -18,6 +18,10 @@
   10- npm install knex --save
   11- npm install sqlite3
 
+  -- Cors
+  12- npm install cors
+  13- npm install @types/cors -D
+
 -- Create Client
   1- npx create-react-app web --template=typescript
 
@@ -38,7 +42,6 @@
     # point_items (Relacionament dos items que um ponto coleta)
       + point_id
       + item _id
-
 
 -- Funcionalidades
   + Cadastro de ponto de coleta
