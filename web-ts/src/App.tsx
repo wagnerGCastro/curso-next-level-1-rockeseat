@@ -1,13 +1,12 @@
 import React from 'react';
-
-import HomeDefault from './pages/home/HomeDefault';
+import Routes from './routes';
 
 import './app-style.css';
 
 function App() {
   return (
     <div className="app">
-      <HomeDefault />
+      <Routes />
     </div>
   );
 }

@@ -24,4 +24,4 @@ yarn-error.log*
 
 server/src/database/database\.sqlite-journal
 
-web-ts/package-lock\.json
+web-ts/package-lock.json

@@ -1,12 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FiLogIn } from 'react-icons/fi';
 
-
 import logo from '../../assets/logo.svg';
-
 import './styles.css';
 
-const HomeDefault: React.FC = () => {
+const Home: React.FC = () => {
   return (
     <div id="page-home">
       <div className="content">
@@ -18,10 +17,10 @@ const HomeDefault: React.FC = () => {
           <h1>Seu marketplace de coleta de resíduos.</h1>
           <p>Ajudamos pessoas a econtrarem pontos de coleta de forma eficiente.</p>
 
-          <a href="/cadastro">
+          <Link to="/create-point">
             <span><FiLogIn /></span>
             <strong>Cadastre um ponto de coleta</strong>
-          </a>
+          </Link>
         </main>
 
       </div>
@@ -29,4 +28,4 @@ const HomeDefault: React.FC = () => {
   )
 }
 
-export default HomeDefault;
+export default Home;
