@@ -1,5 +1,5 @@
-import React, { useState, useEffect, ChangeEvent } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { Map, TileLayer, Marker } from 'react-leaflet'
 import { LeafletMouseEvent } from 'leaflet';
 import { FiArrowLeft } from 'react-icons/fi';
@@ -24,22 +24,25 @@ interface IBGERespCitysProps {
   nome: string
 }
 
-interface MarkedPositionProps {
-  lat: number,
-  lng: number
-}
-
 const CreatePoint: React.FC = () => {
   const [items, setItems] = useState<ItemProps[]>([]);
   const [ufs, setUfs] = useState<string[]>([]);
   const [citys, setCitys] = useState<string[]>([]);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    whatsapp: ''
+  });
+  const [selectedItems, setSelectedItems] = useState<number[]>([]);
   const [selectedUF, setSelectedUF] = useState<string>('0');
   const [selectedCity, setSelectedCity] = useState<string>('0');
   const [initialPosition, setInitialPosition] = useState<[number, number]>([0, 0]);
   const [selectedPosition, setSelectedPosition] = useState<[number, number]>([0, 0]);
 
+  const history = useHistory();
+
   function handleMapClick(event: LeafletMouseEvent) {
-    console.log(event.latlng);
+    //console.log(event.latlng);
     setSelectedPosition([ event.latlng.lat, event.latlng.lng]);
   }
 
@@ -53,11 +56,57 @@ const CreatePoint: React.FC = () => {
     setSelectedCity(event.target.value)
   }
 
+  function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
+    //console.log(event.target.name, event.target.value);
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value })
+    // setSelectedCity(event.target.value)
+  }
+
+  function handleSelectItem(id: number) {
+    //console.log('item', id)
+    const alreadySelected = selectedItems.findIndex((item => item === id));
+
+    if(alreadySelected >= 0) {
+      // Remove
+      const filteredItems = selectedItems.filter((item => item !== id));
+      setSelectedItems(filteredItems);
+    } else {
+      // add
+      setSelectedItems([ ...selectedItems, id ])
+    }
+  }
+
+  async function handleSubmit(event: FormEvent ) {
+    event.preventDefault();
+    const { name , email, whatsapp } = formData;
+    const uf = selectedUF;
+    const city = selectedCity;
+    const [latitude, longitude ] = selectedPosition;
+    const items = selectedItems;
+
+    const data = {
+      name,
+      email,
+      whatsapp,
+      uf,
+      city,
+      latitude,
+      longitude,
+      items
+    }
+
+    console.log('FomrData', data);
+    await api.post('points', data);
+    alert('Ponto de coleta Criado!');
+    history.push('/');
+  }
+
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(position => {
       const { latitude, longitude } = position.coords;
       setInitialPosition([latitude, longitude])
-      console.log('position', position)
+      //console.log('position', position)
     });
   }, []);
 
@@ -95,7 +144,7 @@ const CreatePoint: React.FC = () => {
         </Link>
       </header>
 
-      <form>
+      <form onSubmit={handleSubmit}>
         <h1>Cadastro do <br/> ponto de coleta</h1>
 
         <fieldset>
@@ -104,17 +153,17 @@ const CreatePoint: React.FC = () => {
           </legend>
           <div className="field">
             <label htmlFor="name">Nome da entidade</label>
-            <input type="text" name="name" id="name"/>
+            <input type="text" name="name" id="name" onChange={handleInputChange}/>
           </div>
 
           <div className="field-group">
             <div className="field">
               <label htmlFor="email">Email</label>
-              <input type="email" name="email" id="email"/>
+              <input type="email" name="email" id="email" onChange={handleInputChange}/>
             </div>
             <div className="field">
               <label htmlFor="whatsapp">Whatsapp</label>
-              <input type="text" name="whatsapp" id="whatsapp"/>
+              <input type="text" name="whatsapp" id="whatsapp" onChange={handleInputChange}/>
             </div>
           </div>
         </fieldset>
@@ -174,7 +223,11 @@ const CreatePoint: React.FC = () => {
 
           <ul className="items-grid">
             {items.map((item, idx) => (
-              <li key={idx} className="selected">
+              <li
+                key={idx}
+                className={selectedItems.includes(item.id) ? 'selected' : ''}
+                onClick={() => {handleSelectItem(item.id)}}
+              >
                 <img src={ item.image_url } alt={item.title}/>
                 <span>{ item.title }</span>
               </li>
