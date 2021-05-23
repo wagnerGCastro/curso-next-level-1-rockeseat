@@ -2,7 +2,7 @@
 -- Dependencies: 
   - Node 14.17.0
 
--- Create Server
+-- Backend: Create Server
   00- mkdir server && cd server
   01- npm init -y
   02- npm install --save express
@@ -21,6 +21,9 @@
   -- Cors
   12- npm install cors
   13- npm install @types/cors -D
+
+  - Frontend
+  
 
 -- Create Client
   1- npx create-react-app web --template=typescript
