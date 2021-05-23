@@ -22,7 +22,8 @@
   12- npm install cors
   13- npm install @types/cors -D
 
-  - Frontend
+-- Frontend
+  00- npx create-react-app web --template=typescript
   01- npm install react-icons
   02- npm install react react-dom 
   03- npm install @types/react react-dom -D
@@ -30,10 +31,17 @@
   05- npm install -D @types/leaflet  @types/react-leaflet
   06- npm install axios 
 
-  
+-- Mobile
+  01- npm install -g expo-cli
+  02- expo init mobile
+      - cd mobile
+      - yarn start # you can open iOS, Android, or web from here, or run them directl
+      with the commands below.
+      - yarn android
+      - yarn ios # requires an iOS device or macOS for access to an iOS simulator
+      - yarn web
 
--- Create Client
-  1- npx create-react-app web --template=typescript
+
 
 -- Modelagem
   # points (pontos de coleta)
@@ -81,3 +89,4 @@
 
 -- Guia type script react
   https://github.com/typescript-cheatsheets/react
+
