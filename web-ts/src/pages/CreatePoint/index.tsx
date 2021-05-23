@@ -1,11 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Map, TileLayer, Marker } from 'react-leaflet'
 import { FiArrowLeft } from 'react-icons/fi';
+
 
 import logo from '../../assets/logo.svg';
 import './styles.css';
+// import 'leaflet/dist/leaflet.css'; // -- error base64
 
 const CreatePoint: React.FC = () => {
+
   return (
     <div id="page-create-point">
       <header>
@@ -45,6 +49,14 @@ const CreatePoint: React.FC = () => {
             <h2>Endereço</h2>
             <span>Selecione o endereço no mapa</span>
           </legend>
+
+          <Map center={[-21.1590692, -47.7708329]} zoom={15} scrollWheelZoom={false}>
+            <TileLayer
+              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            <Marker position={[-21.1590692, -47.7708329]} />
+          </Map>
 
           <div className="field-group">
             <div className="field">

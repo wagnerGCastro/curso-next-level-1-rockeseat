@@ -23,6 +23,13 @@
   13- npm install @types/cors -D
 
   - Frontend
+  01- npm install react-icons
+  02- npm install react react-dom 
+  03- npm install @types/react react-dom -D
+  04- npm install react-leaflet leaflet
+  05- npm install -D @types/leaflet  @types/react-leaflet
+  06- npm install axios 
+
   
 
 -- Create Client
@@ -55,3 +62,15 @@
 
 -- Cross env set port
   https://www.cloudhadoop.com/reactjs-change-default-port/
+
+-- Integration Mapa
+  - https://leafletjs.com/
+  - https://react-leaflet.js.org/
+
+-- Errors:
+  - Integration Mapa
+  -- https://stackoverflow.com/questions/66064706/react-module-parse-failed-unexpected-token-148
+  https://exerror.com/failed-to-compile-node_modules-react-leaflet-core-esm-path-js-1041-module-parse-failed-unexpected-token-1041/
+
+  "react-leaflet": ">=3.1.0 <3.2.0 || ^3.2.1",
+  "@react-leaflet/core": ">=1.0.0 <1.1.0 || ^1.1.1"
