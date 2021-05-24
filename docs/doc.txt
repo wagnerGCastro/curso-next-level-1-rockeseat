@@ -28,7 +28,7 @@
   02- npm install react react-dom 
   03- npm install @types/react react-dom -D
   04- npm install react-leaflet leaflet
-  05- npm install -D @types/leaflet  @types/react-leaflet
+  05- npm install -D @types/leaflet @types/react-leaflet
   06- npm install axios 
 
 -- Mobile
@@ -40,6 +40,14 @@
       - yarn android
       - yarn ios # requires an iOS device or macOS for access to an iOS simulator
       - yarn web
+  03- expo install expo-font
+  04- expo install @expo-google-fonts/ubuntu 
+  05- expo install @expo-google-fonts/roboto
+  06- expo install expo-app-loading 
+  07- npm install @react-navigation/native
+  08- expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view
+  09- npm install @react-navigation/stack
+  10- npm install @expo/vector-icons
 
 
 
@@ -90,3 +98,9 @@
 -- Guia type script react
   https://github.com/typescript-cheatsheets/react
 
+-- Guia
+  https://docs.expo.io/guides/
+  https://docs.expo.io/versions/v41.0.0/sdk/app-loading/
+
+-- React Navigation
+  https://reactnavigation.org/
